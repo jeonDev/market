@@ -1,9 +1,8 @@
 package com.jeon.market.application.member.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
 
-@Getter
+@Access(AccessType.FIELD)
 @Entity
 @Table(name = "MEMBER")
 public class Member {
@@ -15,6 +14,26 @@ public class Member {
     private String password;
     private String name;
     private String phoneNumber;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
     protected Member() {
     }
