@@ -9,6 +9,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "LOGIN_ID", nullable = false, length = 100)

@@ -13,12 +13,12 @@ import static org.mockito.Mockito.when;
 
 class MemberServiceTest {
     private MemberRepository memberRepository;
-    private MemberService memberService;
+    private CreateMemberService memberService;
 
     @BeforeEach
     void setUp() {
         memberRepository = mock(MemberRepository.class);
-        memberService = new MemberService(memberRepository);
+        memberService = new CreateMemberService(memberRepository);
     }
 
     @DisplayName("고객정보 생성 성공")

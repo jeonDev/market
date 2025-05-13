@@ -5,11 +5,11 @@ import com.jeon.market.application.member.domain.MemberRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberService {
+public class CreateMemberService {
 
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository) {
+    public CreateMemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
