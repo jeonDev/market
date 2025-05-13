@@ -2,17 +2,25 @@ package com.jeon.market.application.member.domain;
 
 import jakarta.persistence.*;
 
-@Access(AccessType.FIELD)
 @Entity
 @Table(name = "MEMBER")
+@Access(AccessType.FIELD)
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "LOGIN_ID", nullable = false, length = 100)
     private String loginId;
+
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
+
+    @Column(name = "NAME", nullable = false, length = 30)
     private String name;
+
+    @Column(name = "PHONE_NUMBER", length = 11)
     private String phoneNumber;
 
     public Long getId() {
