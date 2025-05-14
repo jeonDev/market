@@ -1,6 +1,6 @@
 package com.jeon.market.application.member.endpoint;
 
-import com.jeon.market.application.member.usecase.CreateMemberService;
+import com.jeon.market.application.member.service.CreateMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

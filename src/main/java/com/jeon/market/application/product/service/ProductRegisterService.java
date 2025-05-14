@@ -1,4 +1,4 @@
-package com.jeon.market.application.product.usecase;
+package com.jeon.market.application.product.service;
 
 import com.jeon.market.application.product.domain.ProductRepository;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.jeon.market.application.member.usecase;
+package com.jeon.market.application.member.service;
 
 import com.jeon.market.application.member.domain.Member;
 

@@ -1,6 +1,6 @@
 package com.jeon.market.application.member.endpoint;
 
-import com.jeon.market.application.member.usecase.CreateMemberResponse;
+import com.jeon.market.application.member.service.CreateMemberResponse;
 
 public record MemberCreateResponse(
         Long id
