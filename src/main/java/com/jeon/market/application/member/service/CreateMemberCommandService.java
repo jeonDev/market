@@ -6,18 +6,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CreateMemberService {
+public class CreateMemberCommandService {
 
     private final MemberRepository memberRepository;
 
-    public CreateMemberService(MemberRepository memberRepository) {
+    public CreateMemberCommandService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
     @Transactional
-    public CreateMemberResponse createMember(String loginId, String password, String name, String phoneNumber) {
+    public CreateMemberCommandResponse createMember(String loginId, String password, String name, String phoneNumber) {
         Member member = Member.createMember(loginId, password, name, phoneNumber);
-        return CreateMemberResponse.of(memberRepository.createMember(member));
+        return CreateMemberCommandResponse.of(memberRepository.createMember(member));
     }
 
 }

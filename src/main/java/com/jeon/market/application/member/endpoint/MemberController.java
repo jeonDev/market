@@ -1,6 +1,6 @@
 package com.jeon.market.application.member.endpoint;
 
-import com.jeon.market.application.member.service.CreateMemberService;
+import com.jeon.market.application.member.service.CreateMemberCommandService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberController {
 
-    private final CreateMemberService memberService;
+    private final CreateMemberCommandService memberService;
 
-    public MemberController(CreateMemberService memberService) {
+    public MemberController(CreateMemberCommandService memberService) {
         this.memberService = memberService;
     }
 

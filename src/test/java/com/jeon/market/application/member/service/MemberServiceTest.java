@@ -13,12 +13,12 @@ import static org.mockito.Mockito.when;
 
 class MemberServiceTest {
     private MemberRepository memberRepository;
-    private CreateMemberService memberService;
+    private CreateMemberCommandService memberService;
 
     @BeforeEach
     void setUp() {
         memberRepository = mock(MemberRepository.class);
-        memberService = new CreateMemberService(memberRepository);
+        memberService = new CreateMemberCommandService(memberRepository);
     }
 
     @DisplayName("고객정보 생성 성공")
@@ -32,7 +32,7 @@ class MemberServiceTest {
         Member member = Member.createMember(loginId, password, name, phoneNumber);
         when(memberRepository.createMember(any(Member.class))).thenReturn(member);
 
-        CreateMemberResponse response = memberService.createMember(loginId, password, name, phoneNumber);
+        CreateMemberCommandResponse response = memberService.createMember(loginId, password, name, phoneNumber);
 
         assertThat(response.loginId()).isEqualTo(loginId);
         assertThat(response.name()).isEqualTo(name);

@@ -5,6 +5,8 @@ import com.jeon.market.application.member.domain.MemberRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public class MemberRepositoryImpl implements MemberRepository {
 
@@ -12,6 +14,12 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     public MemberRepositoryImpl(JpaMemberRepository jpaMemberRepository) {
         this.jpaMemberRepository = jpaMemberRepository;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Member> findById(Long id) {
+        return jpaMemberRepository.findById(id);
     }
 
     @Override

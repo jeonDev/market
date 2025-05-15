@@ -1,10 +1,15 @@
 package com.jeon.market.application.product.domain;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigInteger;
 
+@Getter
 @Entity
+@Builder(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "PRODUCT")
 @Access(AccessType.FIELD)
 public class Product {
@@ -25,5 +30,23 @@ public class Product {
 
     @Column(name = "PRICE")
     private BigInteger price;
+
+    @Column(name = "VIEW_COUNT")
+    private Long viewCount;
+
+
+    public static Product createProduct(
+            Long memberId,
+            String title,
+            String content,
+            BigInteger price
+    ) {
+        return Product.builder()
+                .memberId(memberId)
+                .title(title)
+                .content(content)
+                .price(price)
+                .build();
+    }
 
 }
