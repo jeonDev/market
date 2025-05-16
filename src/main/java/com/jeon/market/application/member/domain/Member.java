@@ -42,6 +42,7 @@ public class Member {
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.wrongPasswordCount = 0;
     }
 
     public static Member createMember(String loginId,
