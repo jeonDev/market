@@ -23,6 +23,11 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
+    public Optional<Member> findByLoginId(String loginId) {
+        return jpaMemberRepository.findByLoginId(loginId);
+    }
+
+    @Override
     @Transactional
     public Member createMember(Member member) {
         jpaMemberRepository.findByLoginId(member.getLoginId())
