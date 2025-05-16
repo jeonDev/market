@@ -14,7 +14,7 @@ public class LoginCommandService {
         this.memberRepository = memberRepository;
     }
 
-    @Transactional()
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public LoginCommandResponse login(String id, String password) {
         Member member = memberRepository.findByLoginId(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID"));
