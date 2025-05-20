@@ -1,5 +1,6 @@
 package com.jeon.market.application.member.service;
 
+import com.jeon.market.application.member.domain.type.Grade;
 import com.jeon.market.application.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -9,7 +10,8 @@ public record MemberQueryResponse(
         Long id,
         String loginId,
         String name,
-        String phoneNumber
+        String phoneNumber,
+        Grade grade
 ) {
     public static MemberQueryResponse from(Member member) {
         return MemberQueryResponse.builder()
@@ -17,6 +19,7 @@ public record MemberQueryResponse(
                 .loginId(member.getLoginId())
                 .name(member.getName())
                 .phoneNumber(member.getPhoneNumber())
+                .grade(member.getGrade())
                 .build();
     }
 }

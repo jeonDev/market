@@ -1,5 +1,6 @@
 package com.jeon.market.application.member.domain;
 
+import com.jeon.market.application.member.domain.type.Grade;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -34,6 +35,11 @@ public class Member {
     @Column(name = "WRONG_PASSWORD_COUNT")
     private Integer wrongPasswordCount;
 
+    @Getter
+    @Enumerated(EnumType.STRING)
+    @Column(name = "GRADE")
+    private Grade grade;
+
     protected Member() {
     }
 
@@ -43,6 +49,7 @@ public class Member {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.wrongPasswordCount = 0;
+        this.grade = Grade.BASIC;
     }
 
     public static Member createMember(String loginId,
