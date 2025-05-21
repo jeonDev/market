@@ -1,5 +1,6 @@
 package com.jeon.market.application.product.domain;
 
+import com.jeon.market.application.product.domain.type.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +35,9 @@ public class Product {
     @Column(name = "VIEW_COUNT")
     private Long viewCount;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private ProductStatus status;
 
     public static Product createProduct(
             Long memberId,
@@ -46,7 +50,17 @@ public class Product {
                 .title(title)
                 .content(content)
                 .price(price)
+                .status(ProductStatus.NEW)
                 .build();
     }
 
+    public void writerCheck(Long memberId) {
+        if (!this.memberId.equals(memberId)) {
+            throw new RuntimeException("등록자가 아님");
+        }
+    }
+
+    public void transactionComplete() {
+        this.status = ProductStatus.COMPLETE;
+    }
 }
