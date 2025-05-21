@@ -33,7 +33,7 @@ public class Product {
     private BigInteger price;
 
     @Column(name = "VIEW_COUNT")
-    private Long viewCount;
+    private Integer viewCount;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")
@@ -51,6 +51,7 @@ public class Product {
                 .content(content)
                 .price(price)
                 .status(ProductStatus.NEW)
+                .viewCount(0)
                 .build();
     }
 
