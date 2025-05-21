@@ -1,6 +1,5 @@
 package com.jeon.market.application.product.service;
 
-import com.jeon.market.application.member.domain.type.Grade;
 import com.jeon.market.application.member.service.MemberQueryResponse;
 import com.jeon.market.application.member.service.MemberQueryService;
 import com.jeon.market.application.product.domain.Product;
@@ -24,11 +23,7 @@ public class ProductRegisterCommandService {
     public ProductRegisterCommandResponse register(ProductRegisterCommandRequest request) {
         // 1. 유효한 고객인지 체크.
         MemberQueryResponse member = memberQueryService.findById(request.memberId());
-
-        // 1-1. 회원 등급 확인 (TODO: 어느 위치에서 검증을 해야하나)
-        if (member.grade() == Grade.BLACK_LIST) {
-            throw new IllegalStateException("블랙리스트 회원");
-        }
+        member.activeMemberCheck();
 
         // 2. 상품 정보 등록
         Product product = Product.createProduct(member.id(), request.title(), request.content(), request.price());

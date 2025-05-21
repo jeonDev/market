@@ -22,4 +22,12 @@ public record MemberQueryResponse(
                 .grade(member.getGrade())
                 .build();
     }
+
+    // TODO: 어느 위치에서 검증을 해야하나
+    public void activeMemberCheck() {
+        // 회원 등급 확인
+        if (this.grade == Grade.BLACK_LIST) {
+            throw new IllegalStateException("블랙리스트 회원");
+        }
+    }
 }
