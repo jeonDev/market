@@ -1,5 +1,6 @@
 package com.jeon.market.application.product.endpoint;
 
+import com.jeon.market.application.auth.service.SessionService;
 import com.jeon.market.application.product.service.ProductCompleteCommandService;
 import com.jeon.market.application.product.service.ProductRegisterCommandService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,18 +11,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ProductController {
 
+    private final SessionService sessionService;
     private final ProductRegisterCommandService productRegisterCommandService;
     private final ProductCompleteCommandService productCompleteCommandService;
 
-    public ProductController(ProductRegisterCommandService productRegisterCommandService,
+    public ProductController(SessionService sessionService,
+                             ProductRegisterCommandService productRegisterCommandService,
                              ProductCompleteCommandService productCompleteCommandService) {
+        this.sessionService = sessionService;
         this.productRegisterCommandService = productRegisterCommandService;
         this.productCompleteCommandService = productCompleteCommandService;
     }
 
     @PostMapping("/product/register")
     public ResponseEntity<ProductRegisterResponse> register(@RequestBody ProductRegisterRequest request) {
-        Long memberId = 1L; // TODO: 로그인 기능 구현 후
+        Long memberId = sessionService.getMemberId();
         return ResponseEntity.ok(
                 ProductRegisterResponse.from(productRegisterCommandService.register(request.toRequest(memberId)))
         );
@@ -29,7 +33,7 @@ public class ProductController {
 
     @PatchMapping("/product/complete/{productId}")
     public ResponseEntity<String> complete(@PathVariable("productId") Long productId) {
-        Long memberId = 1L; // TODO: 로그인 기능 구현 후.
+        Long memberId = sessionService.getMemberId();
         productCompleteCommandService.complete(productId, memberId);
         return ResponseEntity.ok("Ok");
     }
