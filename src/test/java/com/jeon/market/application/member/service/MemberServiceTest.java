@@ -28,11 +28,17 @@ class MemberServiceTest {
         String password = "password";
         String name = "name";
         String phoneNumber = "01000001111";
+        CreateMemberCommandRequest request = CreateMemberCommandRequest.builder()
+                .loginId(loginId)
+                .password(password)
+                .name(name)
+                .phoneNumber(phoneNumber)
+                .build();
 
         Member member = Member.createMember(loginId, password, name, phoneNumber);
         when(memberRepository.createMember(any(Member.class))).thenReturn(member);
 
-        CreateMemberCommandResponse response = memberService.createMember(loginId, password, name, phoneNumber);
+        CreateMemberCommandResponse response = memberService.createMember(request);
 
         assertThat(response.loginId()).isEqualTo(loginId);
         assertThat(response.name()).isEqualTo(name);

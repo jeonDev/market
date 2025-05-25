@@ -1,6 +1,7 @@
 package com.jeon.market.application.member.endpoint;
 
 import com.jeon.market.application.member.service.LoginCommandService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,9 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@RequestBody @Valid LoginRequest request) {
         return ResponseEntity.ok(
-                loginCommandService.login(request.getId(), request.getPassword())
+                loginCommandService.login(request.id(), request.password())
                         .accessToken()
         );
     }

@@ -1,9 +1,11 @@
 package com.jeon.market.application.member.endpoint;
 
-import lombok.Getter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Getter
-public class LoginRequest {
-    private String id;
-    private String password;
+public record LoginRequest(
+        @NotBlank(message = "아이디를 입력하시오") String id,
+        @NotNull(message = "패스워드를 입력하시오") String password
+) {
+
 }

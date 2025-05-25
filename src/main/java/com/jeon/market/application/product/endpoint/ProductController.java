@@ -3,6 +3,7 @@ package com.jeon.market.application.product.endpoint;
 import com.jeon.market.application.auth.service.SessionService;
 import com.jeon.market.application.product.service.ProductCompleteCommandService;
 import com.jeon.market.application.product.service.ProductRegisterCommandService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ProductController {
     }
 
     @PostMapping("/product/register")
-    public ResponseEntity<ProductRegisterResponse> register(@RequestBody ProductRegisterRequest request) {
+    public ResponseEntity<ProductRegisterResponse> register(@RequestBody @Valid ProductRegisterRequest request) {
         Long memberId = sessionService.getMemberId();
         return ResponseEntity.ok(
                 ProductRegisterResponse.from(productRegisterCommandService.register(request.toRequest(memberId)))

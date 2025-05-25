@@ -15,9 +15,10 @@ public class CreateMemberCommandService {
     }
 
     @Transactional
-    public CreateMemberCommandResponse createMember(String loginId, String password, String name, String phoneNumber) {
-        Member member = Member.createMember(loginId, password, name, phoneNumber);
-        return CreateMemberCommandResponse.of(memberRepository.createMember(member));
+    public CreateMemberCommandResponse createMember(CreateMemberCommandRequest request) {
+        Member member = request.toEntity();
+        memberRepository.createMember(member);
+        return CreateMemberCommandResponse.of(member);
     }
 
 }

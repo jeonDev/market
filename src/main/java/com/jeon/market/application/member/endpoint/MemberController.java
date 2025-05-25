@@ -1,6 +1,7 @@
 package com.jeon.market.application.member.endpoint;
 
 import com.jeon.market.application.member.service.CreateMemberCommandService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +19,10 @@ public class MemberController {
     }
 
     @PostMapping("/member/create")
-    public ResponseEntity<MemberCreateResponse> create(@RequestBody MemberCreateRequest request) {
+    public ResponseEntity<MemberCreateResponse> create(@RequestBody @Valid MemberCreateRequest request) {
         return ResponseEntity.ok(
                 MemberCreateResponse.of(
-                        memberService.createMember(request.loginId(), request.password(), request.name(), request.phoneNumber())
+                        memberService.createMember(request.toRequest())
                 )
         );
     }
