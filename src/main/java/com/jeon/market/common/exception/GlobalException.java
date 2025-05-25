@@ -22,4 +22,13 @@ public class GlobalException {
                         ErrorResponse.of("V0", message)
                 );
     }
+
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<ErrorResponse> serviceException(final ServiceException e) {
+        log.error("[Valid] Service 오류 : {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(
+                        ErrorResponse.of(e.getCode(), e.getMessage())
+                );
+    }
 }
