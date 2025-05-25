@@ -25,12 +25,11 @@ public class ProductCompleteCommandService {
         MemberQueryResponse member = memberQueryService.findById(memberId);
         member.activeMemberCheck();
 
-        // 2. 상품 및 등록자 체크
+        // 2. 상품 조회 및 존재 여부 체크
         Product product = productRepository.findById(productId)
                 .orElseThrow();
-        product.writerCheck(member.id());
 
         // 3. 상품 판매 완료 처리
-        product.transactionComplete();
+        product.transactionComplete(member.id());
     }
 }

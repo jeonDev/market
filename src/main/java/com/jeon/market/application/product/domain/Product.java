@@ -55,13 +55,14 @@ public class Product {
                 .build();
     }
 
-    public void writerCheck(Long memberId) {
+    private void writerCheck(Long memberId) {
         if (!this.memberId.equals(memberId)) {
             throw new RuntimeException("등록자가 아님");
         }
     }
 
-    public void transactionComplete() {
+    public void transactionComplete(Long memberId) {
+        this.writerCheck(memberId);
         this.status = ProductStatus.COMPLETE;
     }
 }
