@@ -1,6 +1,6 @@
-package com.jeon.market.application.member.endpoint;
+package com.jeon.market.application.member.endpoint.request;
 
-import com.jeon.market.application.member.service.CreateMemberCommandRequest;
+import com.jeon.market.application.member.service.request.CreateMemberCommandRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

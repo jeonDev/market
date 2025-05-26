@@ -2,6 +2,8 @@ package com.jeon.market.application.member.service;
 
 import com.jeon.market.application.member.domain.Member;
 import com.jeon.market.application.member.domain.MemberRepository;
+import com.jeon.market.application.member.service.request.CreateMemberCommandRequest;
+import com.jeon.market.application.member.service.response.CreateMemberCommandResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.jeon.market.application.member.endpoint;
+package com.jeon.market.application.member.endpoint.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

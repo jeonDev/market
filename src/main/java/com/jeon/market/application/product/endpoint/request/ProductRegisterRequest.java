@@ -1,6 +1,6 @@
-package com.jeon.market.application.product.endpoint;
+package com.jeon.market.application.product.endpoint.request;
 
-import com.jeon.market.application.product.service.ProductRegisterCommandRequest;
+import com.jeon.market.application.product.service.request.ProductRegisterCommandRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;

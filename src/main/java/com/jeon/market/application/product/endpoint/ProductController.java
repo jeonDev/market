@@ -1,6 +1,8 @@
 package com.jeon.market.application.product.endpoint;
 
 import com.jeon.market.application.auth.service.SessionService;
+import com.jeon.market.application.product.endpoint.request.ProductRegisterRequest;
+import com.jeon.market.application.product.endpoint.response.ProductRegisterResponse;
 import com.jeon.market.application.product.service.ProductCompleteCommandService;
 import com.jeon.market.application.product.service.ProductRegisterCommandService;
 import jakarta.validation.Valid;

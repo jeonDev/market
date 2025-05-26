@@ -1,6 +1,6 @@
 package com.jeon.market.application.product.service;
 
-import com.jeon.market.application.member.service.MemberQueryResponse;
+import com.jeon.market.application.member.service.response.MemberQueryResponse;
 import com.jeon.market.application.member.service.MemberQueryService;
 import com.jeon.market.application.product.domain.Product;
 import com.jeon.market.application.product.domain.ProductRepository;

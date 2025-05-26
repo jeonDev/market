@@ -1,6 +1,7 @@
 package com.jeon.market.application.member.service;
 
 import com.jeon.market.application.member.domain.MemberRepository;
+import com.jeon.market.application.member.service.response.MemberQueryResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

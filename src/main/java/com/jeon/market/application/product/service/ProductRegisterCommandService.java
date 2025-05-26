@@ -1,9 +1,11 @@
 package com.jeon.market.application.product.service;
 
-import com.jeon.market.application.member.service.MemberQueryResponse;
+import com.jeon.market.application.member.service.response.MemberQueryResponse;
 import com.jeon.market.application.member.service.MemberQueryService;
 import com.jeon.market.application.product.domain.Product;
 import com.jeon.market.application.product.domain.ProductRepository;
+import com.jeon.market.application.product.service.request.ProductRegisterCommandRequest;
+import com.jeon.market.application.product.service.response.ProductRegisterCommandResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

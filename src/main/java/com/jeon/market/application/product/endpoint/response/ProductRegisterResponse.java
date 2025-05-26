@@ -1,6 +1,6 @@
-package com.jeon.market.application.product.endpoint;
+package com.jeon.market.application.product.endpoint.response;
 
-import com.jeon.market.application.product.service.ProductRegisterCommandResponse;
+import com.jeon.market.application.product.service.response.ProductRegisterCommandResponse;
 import lombok.AccessLevel;
 import lombok.Builder;
 

@@ -1,4 +1,4 @@
-package com.jeon.market.application.member.service;
+package com.jeon.market.application.member.service.response;
 
 import lombok.AccessLevel;
 import lombok.Builder;

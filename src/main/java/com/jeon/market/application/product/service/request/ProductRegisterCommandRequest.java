@@ -1,4 +1,4 @@
-package com.jeon.market.application.product.service;
+package com.jeon.market.application.product.service.request;
 
 import lombok.Builder;
 

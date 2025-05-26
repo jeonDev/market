@@ -1,4 +1,4 @@
-package com.jeon.market.application.product.service;
+package com.jeon.market.application.product.service.response;
 
 import com.jeon.market.application.product.domain.Product;
 import lombok.AccessLevel;
