@@ -10,6 +10,7 @@ import lombok.Getter;
 public class Member {
 
     private final Integer MAX_WRONG_PASSWORD_COUNT = 5;
+    private final Integer BLACKLIST_REPORT_COUNT = 10;
 
     @Getter
     @Id
@@ -94,6 +95,12 @@ public class Member {
     private void validPassword(String password) {
         if (password == null || password.isEmpty()) {
             throw new IllegalArgumentException("패스워드 미 입력");
+        }
+    }
+
+    public void applyGradeByReportCount(Integer reportCount) {
+        if (reportCount >= BLACKLIST_REPORT_COUNT) {
+            this.grade = Grade.BLACK_LIST;
         }
     }
 }
