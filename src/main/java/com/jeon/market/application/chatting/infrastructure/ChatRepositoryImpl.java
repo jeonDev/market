@@ -41,4 +41,11 @@ public class ChatRepositoryImpl implements ChatRepository {
 
         jpaChatMemberRepository.saveAll(list);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Long findByMemberIdAndTargetMemberId(Long memberId, Long targetMemberId) {
+        // TODO:
+        return null;
+    }
 }

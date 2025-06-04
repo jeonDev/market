@@ -1,6 +1,7 @@
 package com.jeon.market.application.chatting.service;
 
 import com.jeon.market.application.chatting.domain.ChatRepository;
+import com.jeon.market.application.chatting.domain.type.ChatType;
 import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
 import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
 import com.jeon.market.application.member.service.MemberQueryService;
@@ -28,7 +29,13 @@ public class ChattingRoomCommandService {
         MemberQueryResponse member = memberQueryService.findById(request.memberId());
         MemberQueryResponse targetMember = memberQueryService.findById(request.targetMemberId());
 
-        // 2. 방 생성
+        // 2. 방 존재 여부 체크 (PERSONAL)
+        if (request.chatType() == ChatType.PERSONAL) {
+            Long roomId = chatRepository.findByMemberIdAndTargetMemberId(member.id(), targetMember.id());
+            if (roomId != null) return ChattingRoomCreateCommandResponse.of(roomId);
+        }
+
+        // 3. 방 생성
         Long chatRoomId = chatRepository.roomCreate(request.chatType())
                 .getId();
         chatRepository.roomCreate(chatRoomId, member.id(), targetMember.id());
