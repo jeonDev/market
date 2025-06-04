@@ -10,6 +10,15 @@ public class ChatMemberId implements Serializable {
     private Long chatRoomId;
     private Long memberId;
 
+    public ChatMemberId(Long chatRoomId, Long memberId) {
+        this.chatRoomId = chatRoomId;
+        this.memberId = memberId;
+    }
+
+    protected ChatMemberId() {
+
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(chatRoomId, memberId);

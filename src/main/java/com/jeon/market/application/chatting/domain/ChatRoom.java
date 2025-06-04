@@ -21,4 +21,11 @@ public class ChatRoom {
     @Enumerated(EnumType.STRING)
     @Column(name = "CHAT_TYPE")
     private ChatType chatType;
+
+
+    public static ChatRoom create(ChatType chatType) {
+        return ChatRoom.builder()
+                .chatType(chatType)
+                .build();
+    }
 }

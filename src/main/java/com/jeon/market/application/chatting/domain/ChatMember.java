@@ -23,4 +23,11 @@ public class ChatMember {
 
     @Column(name = "PARTICIPATION_DATE")
     private LocalDateTime participationDate;
+
+    public static ChatMember create(ChatMemberId id) {
+        return ChatMember.builder()
+                .id(id)
+                .participationDate(LocalDateTime.now())
+                .build();
+    }
 }
