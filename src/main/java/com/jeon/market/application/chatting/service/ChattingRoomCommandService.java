@@ -1,6 +1,7 @@
 package com.jeon.market.application.chatting.service;
 
 import com.jeon.market.application.chatting.domain.ChatRepository;
+import com.jeon.market.application.chatting.domain.ChatRoom;
 import com.jeon.market.application.chatting.domain.type.ChatType;
 import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
 import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
@@ -9,6 +10,9 @@ import com.jeon.market.application.member.service.response.MemberQueryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -25,14 +29,17 @@ public class ChattingRoomCommandService {
 
     @Transactional
     public ChattingRoomCreateCommandResponse create(ChattingRoomCreateCommandRequest request) {
+        if (Objects.equals(request.memberId(), request.targetMemberId())) {
+            throw new IllegalArgumentException();
+        }
         // 1. 사용자 존재 여부 체크
         MemberQueryResponse member = memberQueryService.findById(request.memberId());
         MemberQueryResponse targetMember = memberQueryService.findById(request.targetMemberId());
 
         // 2. 방 존재 여부 체크 (PERSONAL)
         if (request.chatType() == ChatType.PERSONAL) {
-            Long roomId = chatRepository.findByMemberIdAndTargetMemberId(member.id(), targetMember.id());
-            if (roomId != null) return ChattingRoomCreateCommandResponse.of(roomId);
+            Optional<ChatRoom> optionalChatRoom = chatRepository.findByMemberIdAndTargetMemberId(member.id(), targetMember.id());
+            if (optionalChatRoom.isPresent()) return ChattingRoomCreateCommandResponse.of(optionalChatRoom.get().getId());
         }
 
         // 3. 방 생성

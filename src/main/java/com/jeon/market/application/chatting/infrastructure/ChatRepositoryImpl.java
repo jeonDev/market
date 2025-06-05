@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ChatRepositoryImpl implements ChatRepository {
@@ -44,8 +45,7 @@ public class ChatRepositoryImpl implements ChatRepository {
 
     @Override
     @Transactional(readOnly = true)
-    public Long findByMemberIdAndTargetMemberId(Long memberId, Long targetMemberId) {
-        // TODO:
-        return null;
+    public Optional<ChatRoom> findByMemberIdAndTargetMemberId(Long memberId, Long targetMemberId) {
+        return jpaChatRoomRepository.isExistsRoomMember(memberId, targetMemberId, ChatType.PERSONAL, 2);
     }
 }
