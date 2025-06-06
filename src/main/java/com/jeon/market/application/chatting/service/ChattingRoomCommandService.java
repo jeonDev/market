@@ -43,12 +43,17 @@ public class ChattingRoomCommandService {
         }
 
         // 3. 방 생성
-        Long chatRoomId = chatRepository.roomCreate(request.chatType())
-                .getId();
-        chatRepository.roomCreate(chatRoomId, member.id(), targetMember.id());
+        Long chatRoomId = this.makeNewChatRoom(request.chatType(), member.id(), targetMember.id());
 
         return ChattingRoomCreateCommandResponse.of(
                 chatRoomId
         );
+    }
+
+    private Long makeNewChatRoom(ChatType chatType, Long memberId, Long targetMemberId) {
+        Long chatRoomId = chatRepository.roomCreate(chatType)
+                .getId();
+        chatRepository.roomCreate(chatRoomId, memberId, targetMemberId);
+        return chatRoomId;
     }
 }
