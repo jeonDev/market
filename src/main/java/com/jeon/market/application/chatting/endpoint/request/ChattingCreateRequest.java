@@ -15,10 +15,6 @@ public class ChattingCreateRequest {
                 || this.memberId == null || this.memberId <= 0) {
             throw new IllegalArgumentException();
         }
-        return ChattingRoomCreateCommandRequest.builder()
-                .memberId(memberId)
-                .targetMemberId(this.memberId)
-                .chatType(ChatType.PERSONAL)
-                .build();
+        return ChattingRoomCreateCommandRequest.of(ChatType.PERSONAL, memberId, this.memberId);
     }
 }

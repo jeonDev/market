@@ -26,26 +26,31 @@ public class ChatRepositoryImpl implements ChatRepository {
 
     @Override
     @Transactional
-    public ChatRoom roomCreate(ChatType chatType) {
-        return jpaChatRoomRepository.save(ChatRoom.create(chatType));
-    }
+    public ChatRoom roomCreate(ChatType chatType, Long... memberIds) {
+        if (chatType == ChatType.PERSONAL) {
+            Optional<ChatRoom> optionalChatRoom = this.isExistsPersonalChatRoom(memberIds);
+            if (optionalChatRoom.isPresent()) {
+                return optionalChatRoom.get();
+            }
+        }
 
-    @Override
-    @Transactional
-    public void roomCreate(Long chatRoomId, Long... targetMemberId) {
-        List<ChatMember> list = Arrays.stream(targetMemberId)
+        ChatRoom chatRoom = jpaChatRoomRepository.save(ChatRoom.create(chatType));
+
+        List<ChatMember> list = Arrays.stream(memberIds)
                 .map(item -> {
-                    ChatMemberId chatMemberId = new ChatMemberId(chatRoomId, item);
+                    ChatMemberId chatMemberId = new ChatMemberId(chatRoom.getId(), item);
                     return ChatMember.create(chatMemberId);
                 })
                 .toList();
 
         jpaChatMemberRepository.saveAll(list);
+
+        return chatRoom;
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<ChatRoom> findByMemberIdAndTargetMemberId(Long memberId, Long targetMemberId) {
+    private Optional<ChatRoom> isExistsPersonalChatRoom(Long[] memberIds) {
+        Long memberId = memberIds[0];
+        Long targetMemberId = memberIds[1];
         return jpaChatRoomRepository.isExistsRoomMember(memberId, targetMemberId, ChatType.PERSONAL, 2);
     }
 }
