@@ -30,8 +30,10 @@ public class ChattingRoomCommandService {
         MemberQueryResponse targetMember = memberQueryService.findById(request.targetMemberId());
 
         // 2. 방 생성
-        Long chatRoomId = chatRepository.roomCreate(request.chatType(), member.id(), targetMember.id())
-                .getId();
+        Long chatRoomId = request.chatRoomId() != null
+                ? request.chatRoomId()
+                : chatRepository.roomCreate(request.chatType(), member.id(), targetMember.id())
+                        .getId();
 
         return ChattingRoomCreateCommandResponse.of(
                 chatRoomId

@@ -10,10 +10,11 @@ import java.util.Objects;
 public record ChattingRoomCreateCommandRequest(
         Long memberId,
         Long targetMemberId,
+        Long chatRoomId,
         ChatType chatType
 ) {
 
-    public static ChattingRoomCreateCommandRequest of(ChatType chatType, Long memberId, Long targetMemberId) {
+    public static ChattingRoomCreateCommandRequest of(ChatType chatType, Long memberId, Long targetMemberId, Long chatRoomId) {
         if (Objects.equals(memberId, targetMemberId)) {
             throw new IllegalArgumentException();
         }
@@ -21,6 +22,7 @@ public record ChattingRoomCreateCommandRequest(
                 .chatType(chatType)
                 .memberId(memberId)
                 .targetMemberId(targetMemberId)
+                .chatRoomId(chatRoomId)
                 .build();
     }
 }
