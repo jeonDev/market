@@ -32,7 +32,9 @@ public class ChattingController {
     }
 
     @DeleteMapping("/chatting/room/{chatRoomId}")
-    public void delete(@PathVariable("chatRoomId") Long chatRoomId) {
-        // TODO:
+    public ResponseEntity<Boolean> delete(@PathVariable("chatRoomId") Long chatRoomId) {
+        Long memberId = sessionService.getMemberId();
+        chattingRoomCommandService.delete(chatRoomId, memberId);
+        return ResponseEntity.ok(true);
     }
 }

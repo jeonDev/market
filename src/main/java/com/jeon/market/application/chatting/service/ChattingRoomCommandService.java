@@ -38,4 +38,9 @@ public class ChattingRoomCommandService {
         );
     }
 
+    @Transactional
+    public void delete(Long chatRoomId, Long memberId) {
+        chatRepository.delete(chatRoomId, memberId);
+    }
+
 }

@@ -24,10 +24,23 @@ public class ChatMember {
     @Column(name = "PARTICIPATION_DATE")
     private LocalDateTime participationDate;
 
+    @Column(name = "USE_YN")
+    private boolean useYn;
+
     public static ChatMember create(ChatMemberId id) {
         return ChatMember.builder()
                 .id(id)
                 .participationDate(LocalDateTime.now())
+                .useYn(true)
                 .build();
+    }
+
+    public void delete() {
+        this.useYn = false;
+    }
+
+    public ChatMember use() {
+        this.useYn = true;
+        return this;
     }
 }

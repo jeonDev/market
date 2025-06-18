@@ -39,7 +39,9 @@ public class ChatRepositoryImpl implements ChatRepository {
         List<ChatMember> list = Arrays.stream(memberIds)
                 .map(item -> {
                     ChatMemberId chatMemberId = new ChatMemberId(chatRoom.getId(), item);
-                    return ChatMember.create(chatMemberId);
+                    return jpaChatMemberRepository.findById(chatMemberId)
+                            .orElse(ChatMember.create(chatMemberId))
+                            .use();
                 })
                 .toList();
 
@@ -52,5 +54,13 @@ public class ChatRepositoryImpl implements ChatRepository {
         Long memberId = memberIds[0];
         Long targetMemberId = memberIds[1];
         return jpaChatRoomRepository.isExistsRoomMember(memberId, targetMemberId, ChatType.PERSONAL, 2);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long chatRoomId, Long memberId) {
+        jpaChatMemberRepository.findById(new ChatMemberId(chatRoomId, memberId))
+                .orElseThrow()
+                .delete();
     }
 }
