@@ -19,8 +19,8 @@ public interface JpaChatRoomRepository extends JpaRepository<ChatRoom, Long> {
          GROUP BY CR.id
         HAVING COUNT(CR.id) = :roomCount
     """)
-    Optional<ChatRoom> isExistsRoomMember(Long memberId,
-                                          Long targetMemberId,
-                                          ChatType chatType,
-                                          Integer roomCount);
+    Optional<ChatRoom> findByMemberChatRoom(Long memberId,
+                                            Long targetMemberId,
+                                            ChatType chatType,
+                                            Integer roomCount);
 }

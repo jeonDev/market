@@ -4,6 +4,7 @@ import com.jeon.market.application.chatting.domain.ChatMember;
 import com.jeon.market.application.chatting.domain.ChatMemberId;
 import com.jeon.market.application.chatting.domain.ChatManagerRepository;
 import com.jeon.market.application.chatting.domain.ChatRoom;
+import com.jeon.market.application.chatting.domain.dto.ChatRoomMemberDto;
 import com.jeon.market.application.chatting.domain.type.ChatType;
 import com.jeon.market.application.chatting.infrastructure.jpa.JpaChatMemberRepository;
 import com.jeon.market.application.chatting.infrastructure.jpa.JpaChatRoomRepository;
@@ -55,7 +56,7 @@ public class ChatManagerRepositoryImpl implements ChatManagerRepository {
     private Optional<ChatRoom> isExistsPersonalChatRoom(Long[] memberIds) {
         Long memberId = memberIds[0];
         Long targetMemberId = memberIds[1];
-        return jpaChatRoomRepository.isExistsRoomMember(memberId, targetMemberId, ChatType.PERSONAL, 2);
+        return jpaChatRoomRepository.findByMemberChatRoom(memberId, targetMemberId, ChatType.PERSONAL, 2);
     }
 
     @Override
@@ -64,5 +65,10 @@ public class ChatManagerRepositoryImpl implements ChatManagerRepository {
         jpaChatMemberRepository.findById(new ChatMemberId(chatRoomId, memberId))
                 .orElseThrow()
                 .delete();
+    }
+
+    @Override
+    public Optional<ChatRoomMemberDto> findByMemberIdAndRoomId(Long memberId, Long chatRoomId) {
+        return jpaChatMemberRepository.findBySendChatRoom(memberId, chatRoomId);
     }
 }

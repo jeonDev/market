@@ -1,14 +1,12 @@
 package com.jeon.market.application.chatting.domain.mongo;
 
 import com.jeon.market.application.chatting.domain.type.MessageType;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Document("chat")
+@Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chat {
