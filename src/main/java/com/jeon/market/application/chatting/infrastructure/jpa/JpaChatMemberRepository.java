@@ -1,4 +1,4 @@
-package com.jeon.market.application.chatting.infrastructure;
+package com.jeon.market.application.chatting.infrastructure.jpa;
 
 import com.jeon.market.application.chatting.domain.ChatMember;
 import com.jeon.market.application.chatting.domain.ChatMemberId;

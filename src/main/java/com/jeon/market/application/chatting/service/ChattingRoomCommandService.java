@@ -1,6 +1,6 @@
 package com.jeon.market.application.chatting.service;
 
-import com.jeon.market.application.chatting.domain.ChatRepository;
+import com.jeon.market.application.chatting.domain.ChatManagerRepository;
 import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
 import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
 import com.jeon.market.application.member.service.MemberQueryService;
@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ChattingRoomCommandService {
 
-    private final ChatRepository chatRepository;
+    private final ChatManagerRepository chatRepository;
     private final MemberQueryService memberQueryService;
 
-    public ChattingRoomCommandService(ChatRepository chatRepository,
+    public ChattingRoomCommandService(ChatManagerRepository chatRepository,
                                       MemberQueryService memberQueryService) {
         this.chatRepository = chatRepository;
         this.memberQueryService = memberQueryService;

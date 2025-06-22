@@ -2,7 +2,7 @@ package com.jeon.market.application.chatting.domain;
 
 import com.jeon.market.application.chatting.domain.type.ChatType;
 
-public interface ChatRepository {
+public interface ChatManagerRepository {
 
     ChatRoom roomCreate(ChatType chatType, Long... targetMemberId);
     void delete(Long chatRoomId, Long memberId);

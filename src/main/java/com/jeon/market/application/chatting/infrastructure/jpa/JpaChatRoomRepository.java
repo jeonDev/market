@@ -1,4 +1,4 @@
-package com.jeon.market.application.chatting.infrastructure;
+package com.jeon.market.application.chatting.infrastructure.jpa;
 
 import com.jeon.market.application.chatting.domain.ChatRoom;
 import com.jeon.market.application.chatting.domain.type.ChatType;
