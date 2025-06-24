@@ -38,7 +38,7 @@ public class ChattingCommandService {
 
         // 3. 저장
         Chat chat = Chat.builder()
-                .chatRoomId(chatRoomMember.chatRoomId())
+                .chatRoomId(chatRoomMember.getChatRoomId())
                 .memberId(sendMember.id())
                 .messageType(messageType)
                 .message(message)
