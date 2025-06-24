@@ -6,9 +6,13 @@ import com.jeon.market.application.chatting.endpoint.response.ChattingCreateResp
 import com.jeon.market.application.chatting.service.ChattingRoomCommandService;
 import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 public class ChattingController {
 
@@ -36,5 +40,13 @@ public class ChattingController {
         Long memberId = sessionService.getMemberId();
         chattingRoomCommandService.delete(chatRoomId, memberId);
         return ResponseEntity.ok(true);
+    }
+
+    @MessageMapping("/send")
+    @SendTo("/sub/messages")
+    public String sendMessage(String inputMessage) {
+        log.info("[Chatting] 메시지 요청 : {}", inputMessage);
+
+        return inputMessage;
     }
 }
