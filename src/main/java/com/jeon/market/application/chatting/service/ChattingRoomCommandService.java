@@ -3,8 +3,8 @@ package com.jeon.market.application.chatting.service;
 import com.jeon.market.application.chatting.domain.ChatManagerRepository;
 import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
 import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
-import com.jeon.market.application.member.service.MemberQueryService;
-import com.jeon.market.application.member.service.response.MemberQueryResponse;
+import com.jeon.market.application.member.domain.Member;
+import com.jeon.market.application.member.domain.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,24 +15,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class ChattingRoomCommandService {
 
     private final ChatManagerRepository chatRepository;
-    private final MemberQueryService memberQueryService;
+    private final MemberRepository memberRepository;
 
     public ChattingRoomCommandService(ChatManagerRepository chatRepository,
-                                      MemberQueryService memberQueryService) {
+                                      MemberRepository memberRepository) {
         this.chatRepository = chatRepository;
-        this.memberQueryService = memberQueryService;
+        this.memberRepository = memberRepository;
     }
 
     @Transactional
     public ChattingRoomCreateCommandResponse create(ChattingRoomCreateCommandRequest request) {
         // 1. 사용자 존재 여부 체크
-        MemberQueryResponse member = memberQueryService.findById(request.memberId());
-        MemberQueryResponse targetMember = memberQueryService.findById(request.targetMemberId());
+        Member member = memberRepository.findById(request.memberId())
+                .orElseThrow();
+        Member targetMember = memberRepository.findById(request.targetMemberId())
+                .orElseThrow();
 
         // 2. 방 생성
         Long chatRoomId = request.chatRoomId() != null
                 ? request.chatRoomId()
-                : chatRepository.roomCreate(request.chatType(), member.id(), targetMember.id())
+                : chatRepository.roomCreate(request.chatType(), member.getId(), targetMember.getId())
                         .getId();
 
         return ChattingRoomCreateCommandResponse.of(

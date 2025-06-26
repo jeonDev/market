@@ -5,8 +5,8 @@ import com.jeon.market.application.chatting.domain.dto.ChatRoomMemberDto;
 import com.jeon.market.application.chatting.domain.mongo.Chat;
 import com.jeon.market.application.chatting.domain.mongo.ChatRepository;
 import com.jeon.market.application.chatting.domain.type.MessageType;
-import com.jeon.market.application.member.service.MemberQueryService;
-import com.jeon.market.application.member.service.response.MemberQueryResponse;
+import com.jeon.market.application.member.domain.Member;
+import com.jeon.market.application.member.domain.MemberRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,14 +14,14 @@ public class ChattingCommandService {
 
     private final ChatRepository chatRepository;
     private final ChatManagerRepository chatManagerRepository;
-    private final MemberQueryService memberQueryService;
+    private final MemberRepository memberRepository;
 
     public ChattingCommandService(ChatRepository chatRepository,
                                   ChatManagerRepository chatManagerRepository,
-                                  MemberQueryService memberQueryService) {
+                                  MemberRepository memberRepository) {
         this.chatRepository = chatRepository;
         this.chatManagerRepository = chatManagerRepository;
-        this.memberQueryService = memberQueryService;
+        this.memberRepository = memberRepository;
     }
 
     public void send(Long chatRoomId,
@@ -34,12 +34,13 @@ public class ChattingCommandService {
                 .orElseThrow();
 
         // 2. Member 조회
-        MemberQueryResponse sendMember = memberQueryService.findById(memberId);
+        Member sendMember = memberRepository.findById(memberId)
+                .orElseThrow();
 
         // 3. 저장
         Chat chat = Chat.builder()
                 .chatRoomId(chatRoomMember.getChatRoomId())
-                .memberId(sendMember.id())
+                .memberId(sendMember.getId())
                 .messageType(messageType)
                 .message(message)
                 .build();

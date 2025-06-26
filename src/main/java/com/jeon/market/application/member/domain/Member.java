@@ -103,4 +103,11 @@ public class Member {
             this.grade = Grade.BLACK_LIST;
         }
     }
+
+    public void activeMemberCheck() {
+        // 회원 등급 확인
+        if (this.grade == Grade.BLACK_LIST) {
+            throw new IllegalStateException("블랙리스트 회원");
+        }
+    }
 }
