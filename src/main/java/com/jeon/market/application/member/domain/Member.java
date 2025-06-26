@@ -1,6 +1,8 @@
 package com.jeon.market.application.member.domain;
 
 import com.jeon.market.application.member.domain.type.Grade;
+import com.jeon.market.common.exception.ErrorType;
+import com.jeon.market.common.exception.ServiceException;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -81,20 +83,20 @@ public class Member {
         this.validWrongPasswordCount();
         if (!this.password.equals(password)) {
             this.wrongPasswordCount++;
-            throw new IllegalArgumentException("패스워드 불일치");
+            throw new ServiceException(ErrorType.LOGIN_PASSWORD_UNMATCHED);
         }
     }
 
     private void validWrongPasswordCount() {
         if (this.wrongPasswordCount > MAX_WRONG_PASSWORD_COUNT) {
             this.wrongPasswordCount++;
-            throw new IllegalArgumentException("패스워드 틀린횟수 초과");
+            throw new ServiceException(ErrorType.LOGIN_PASSWORD_WRONG_COUNT_MAX);
         }
     }
 
     private void validPassword(String password) {
         if (password == null || password.isEmpty()) {
-            throw new IllegalArgumentException("패스워드 미 입력");
+            throw new ServiceException(ErrorType.DATA_EMPTY_INPUT, "Password");
         }
     }
 

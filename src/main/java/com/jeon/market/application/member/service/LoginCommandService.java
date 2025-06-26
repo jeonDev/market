@@ -4,6 +4,7 @@ import com.jeon.market.application.auth.service.TokenService;
 import com.jeon.market.application.member.domain.Member;
 import com.jeon.market.application.member.domain.MemberRepository;
 import com.jeon.market.application.member.service.response.LoginCommandResponse;
+import com.jeon.market.common.exception.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +20,7 @@ public class LoginCommandService {
         this.tokenService = tokenService;
     }
 
-    @Transactional(noRollbackFor = IllegalArgumentException.class)
+    @Transactional(noRollbackFor = ServiceException.class)
     public LoginCommandResponse login(String id, String password) {
         Member member = memberRepository.findByLoginId(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID"));

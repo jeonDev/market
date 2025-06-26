@@ -15,7 +15,7 @@ public class GlobalException {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> validException(final MethodArgumentNotValidException e) {
-        log.error("[Valid] Endpoint 검증 오류 : {}", e.getMessage());
+        log.error("[GlobalException] Endpoint 검증 오류 : {}", e.getMessage());
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(
@@ -25,8 +25,8 @@ public class GlobalException {
 
     @ExceptionHandler(ServiceException.class)
     public ResponseEntity<ErrorResponse> serviceException(final ServiceException e) {
-        log.error("[Valid] Service 오류 : {}", e.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        log.error("[GlobalException] Service 오류 : {}", e.getMessage());
+        return ResponseEntity.status(e.getHttpStatus())
                 .body(
                         ErrorResponse.of(e.getCode(), e.getMessage())
                 );
