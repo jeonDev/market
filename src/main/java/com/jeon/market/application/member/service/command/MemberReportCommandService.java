@@ -1,11 +1,11 @@
-package com.jeon.market.application.member.service;
+package com.jeon.market.application.member.service.command;
 
 import com.jeon.market.application.member.domain.Member;
 import com.jeon.market.application.member.domain.MemberReport;
 import com.jeon.market.application.member.domain.MemberReportRepository;
 import com.jeon.market.application.member.domain.MemberRepository;
-import com.jeon.market.application.member.service.request.MemberReportCommandRequest;
-import com.jeon.market.application.member.service.response.MemberReportCommandResponse;
+import com.jeon.market.application.member.service.command.request.MemberReportCommandRequest;
+import com.jeon.market.application.member.service.command.response.MemberReportCommandResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

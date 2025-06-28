@@ -1,6 +1,6 @@
 package com.jeon.market.application.member.endpoint.response;
 
-import com.jeon.market.application.member.service.response.CreateMemberCommandResponse;
+import com.jeon.market.application.member.service.command.response.CreateMemberCommandResponse;
 
 public record MemberCreateResponse(
         Long id

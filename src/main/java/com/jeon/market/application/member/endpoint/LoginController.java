@@ -1,7 +1,7 @@
 package com.jeon.market.application.member.endpoint;
 
 import com.jeon.market.application.member.endpoint.request.LoginRequest;
-import com.jeon.market.application.member.service.LoginCommandService;
+import com.jeon.market.application.member.service.command.LoginCommandService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

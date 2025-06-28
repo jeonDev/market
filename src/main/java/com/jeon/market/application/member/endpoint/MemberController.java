@@ -2,7 +2,7 @@ package com.jeon.market.application.member.endpoint;
 
 import com.jeon.market.application.member.endpoint.request.MemberCreateRequest;
 import com.jeon.market.application.member.endpoint.response.MemberCreateResponse;
-import com.jeon.market.application.member.service.CreateMemberCommandService;
+import com.jeon.market.application.member.service.command.CreateMemberCommandService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

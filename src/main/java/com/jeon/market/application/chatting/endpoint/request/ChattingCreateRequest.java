@@ -1,7 +1,7 @@
 package com.jeon.market.application.chatting.endpoint.request;
 
 import com.jeon.market.application.chatting.domain.type.ChatType;
-import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
+import com.jeon.market.application.chatting.service.command.request.ChattingRoomCreateCommandRequest;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 

@@ -2,8 +2,8 @@ package com.jeon.market.application.member.endpoint;
 
 import com.jeon.market.application.auth.service.SessionService;
 import com.jeon.market.application.member.endpoint.request.MemberReportRequest;
-import com.jeon.market.application.member.service.response.MemberReportCommandResponse;
-import com.jeon.market.application.member.service.MemberReportCommandService;
+import com.jeon.market.application.member.service.command.response.MemberReportCommandResponse;
+import com.jeon.market.application.member.service.command.MemberReportCommandService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.jeon.market.application.member.service.response;
+package com.jeon.market.application.member.service.command.response;
 
 import com.jeon.market.application.member.domain.Member;
 

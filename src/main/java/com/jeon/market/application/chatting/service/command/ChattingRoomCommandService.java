@@ -1,8 +1,8 @@
-package com.jeon.market.application.chatting.service;
+package com.jeon.market.application.chatting.service.command;
 
 import com.jeon.market.application.chatting.domain.ChatManagerRepository;
-import com.jeon.market.application.chatting.service.request.ChattingRoomCreateCommandRequest;
-import com.jeon.market.application.chatting.service.response.ChattingRoomCreateCommandResponse;
+import com.jeon.market.application.chatting.service.command.request.ChattingRoomCreateCommandRequest;
+import com.jeon.market.application.chatting.service.command.response.ChattingRoomCreateCommandResponse;
 import com.jeon.market.application.member.domain.Member;
 import com.jeon.market.application.member.domain.MemberRepository;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.jeon.market.application.chatting.service.response;
+package com.jeon.market.application.chatting.service.command.response;
 
 import lombok.AccessLevel;
 import lombok.Builder;

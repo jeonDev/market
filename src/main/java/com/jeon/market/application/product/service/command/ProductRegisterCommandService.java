@@ -1,36 +1,39 @@
-package com.jeon.market.application.product.service;
+package com.jeon.market.application.product.service.command;
 
 import com.jeon.market.application.member.domain.Member;
 import com.jeon.market.application.member.domain.MemberRepository;
 import com.jeon.market.application.product.domain.Product;
 import com.jeon.market.application.product.domain.ProductRepository;
+import com.jeon.market.application.product.service.command.request.ProductRegisterCommandRequest;
+import com.jeon.market.application.product.service.command.response.ProductRegisterCommandResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ProductCompleteCommandService {
+public class ProductRegisterCommandService {
 
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
 
-    public ProductCompleteCommandService(ProductRepository productRepository,
+    public ProductRegisterCommandService(ProductRepository productRepository,
                                          MemberRepository memberRepository) {
         this.productRepository = productRepository;
         this.memberRepository = memberRepository;
     }
 
     @Transactional
-    public void complete(Long productId, Long memberId) {
+    public ProductRegisterCommandResponse register(ProductRegisterCommandRequest request) {
         // 1. 유효한 고객인지 체크.
-        Member member = memberRepository.findById(memberId)
+        Member member = memberRepository.findById(request.memberId())
                 .orElseThrow();
         member.activeMemberCheck();
 
-        // 2. 상품 조회 및 존재 여부 체크
-        Product product = productRepository.findById(productId)
-                .orElseThrow();
+        // 2. 상품 정보 등록
+        Product product = Product.createProduct(member.getId(), request.title(), request.content(), request.price());
+        productRepository.save(product);
 
-        // 3. 상품 판매 완료 처리
-        product.transactionComplete(member.getId());
+        return ProductRegisterCommandResponse.from(product);
     }
+
+
 }

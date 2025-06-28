@@ -1,4 +1,4 @@
-package com.jeon.market.application.chatting.service;
+package com.jeon.market.application.chatting.service.command;
 
 import com.jeon.market.application.chatting.domain.ChatManagerRepository;
 import com.jeon.market.application.chatting.domain.dto.ChatRoomMemberDto;

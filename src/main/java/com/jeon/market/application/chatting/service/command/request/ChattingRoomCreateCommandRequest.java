@@ -1,4 +1,4 @@
-package com.jeon.market.application.chatting.service.request;
+package com.jeon.market.application.chatting.service.command.request;
 
 import com.jeon.market.application.chatting.domain.type.ChatType;
 import lombok.AccessLevel;

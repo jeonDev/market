@@ -1,4 +1,4 @@
-package com.jeon.market.application.member.service.request;
+package com.jeon.market.application.member.service.command.request;
 
 import com.jeon.market.application.member.domain.type.Report;
 import lombok.Builder;
