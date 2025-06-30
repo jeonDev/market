@@ -31,4 +31,12 @@ public class GlobalException {
                         ErrorResponse.of(e.getCode(), e.getMessage())
                 );
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> exception(final Exception e) {
+        log.error("[GlobalException] 오류 : {}", e.getMessage(), e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(
+                        ErrorResponse.of("99", "System Error")
+                );    }
 }
