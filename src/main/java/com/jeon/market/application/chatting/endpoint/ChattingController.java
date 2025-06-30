@@ -41,12 +41,4 @@ public class ChattingController {
         chattingRoomCommandService.delete(chatRoomId, memberId);
         return ResponseEntity.ok(true);
     }
-
-    @MessageMapping("/send")
-    @SendTo("/sub/messages")
-    public String sendMessage(String inputMessage) {
-        log.info("[Chatting] 메시지 요청 : {}", inputMessage);
-
-        return inputMessage;
-    }
 }
