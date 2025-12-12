@@ -1,13 +1,11 @@
 package com.jeon.market.chatting.endpoint;
 
 import com.jeon.market.auth.application.service.SessionService;
-import com.jeon.market.chatting.endpoint.request.ChattingCreateRequest;
-import com.jeon.market.chatting.endpoint.response.ChattingCreateResponse;
-import com.jeon.market.chatting.service.command.ChattingRoomCommandService;
-import com.jeon.market.chatting.service.command.response.ChattingRoomCreateCommandResponse;
+import com.jeon.market.chatting.application.usecase.ChatRoomUseCase;
+import com.jeon.market.chatting.application.usecase.ExitChatRoomUseCase;
+import com.jeon.market.chatting.endpoint.payload.ChattingCreatePayload;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -15,28 +13,30 @@ import org.springframework.web.bind.annotation.*;
 public class ChattingController {
 
     private final SessionService sessionService;
-    private final ChattingRoomCommandService chattingRoomCommandService;
+    private final ChatRoomUseCase chatRoomUseCase;
+    private final ExitChatRoomUseCase exitChatRoomUseCase;
 
     public ChattingController(SessionService sessionService,
-                              ChattingRoomCommandService chattingRoomCommandService) {
+                              ChatRoomUseCase chatRoomUseCase,
+                              ExitChatRoomUseCase exitChatRoomUseCase) {
         this.sessionService = sessionService;
-        this.chattingRoomCommandService = chattingRoomCommandService;
+        this.chatRoomUseCase = chatRoomUseCase;
+        this.exitChatRoomUseCase = exitChatRoomUseCase;
     }
 
     @PostMapping("/chatting/room")
-    public ResponseEntity<ChattingCreateResponse> create(@Valid @RequestBody ChattingCreateRequest request) {
+    public ChattingCreatePayload.Response create(@Valid @RequestBody ChattingCreatePayload.Request request) {
         Long memberId = sessionService.getMemberId();
-        ChattingRoomCreateCommandResponse response = chattingRoomCommandService.create(request.toRequest(memberId));
+        var result = chatRoomUseCase.execute(request.toRequest(memberId));
 
-        return ResponseEntity.ok(
-                ChattingCreateResponse.of(response.chatRoomId())
+        return new ChattingCreatePayload.Response(
+                result.chatRoomId()
         );
     }
 
     @DeleteMapping("/chatting/room/{chatRoomId}")
-    public ResponseEntity<Boolean> delete(@PathVariable("chatRoomId") Long chatRoomId) {
+    public void delete(@PathVariable("chatRoomId") Long chatRoomId) {
         Long memberId = sessionService.getMemberId();
-        chattingRoomCommandService.delete(chatRoomId, memberId);
-        return ResponseEntity.ok(true);
+        exitChatRoomUseCase.execute(chatRoomId, memberId);
     }
 }
