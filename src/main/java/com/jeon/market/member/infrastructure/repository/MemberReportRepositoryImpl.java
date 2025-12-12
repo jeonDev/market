@@ -1,7 +1,8 @@
-package com.jeon.market.member.infrastructure;
+package com.jeon.market.member.infrastructure.repository;
 
 import com.jeon.market.member.application.domain.MemberReport;
 import com.jeon.market.member.application.domain.MemberReportRepository;
+import com.jeon.market.member.infrastructure.repository.jpa.JpaMemberReportRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

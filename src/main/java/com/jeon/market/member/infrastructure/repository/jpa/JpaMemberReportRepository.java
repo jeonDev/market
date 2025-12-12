@@ -1,4 +1,4 @@
-package com.jeon.market.member.infrastructure;
+package com.jeon.market.member.infrastructure.repository.jpa;
 
 import com.jeon.market.member.application.domain.MemberReport;
 import org.springframework.data.jpa.repository.JpaRepository;

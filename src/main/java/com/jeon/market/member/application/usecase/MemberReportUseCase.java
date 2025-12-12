@@ -1,8 +1,6 @@
 package com.jeon.market.member.application.usecase;
 
 import com.jeon.market.member.application.domain.Member;
-import com.jeon.market.member.application.domain.MemberReport;
-import com.jeon.market.member.application.domain.MemberReportRepository;
 import com.jeon.market.member.application.domain.MemberRepository;
 import com.jeon.market.member.application.service.MemberReportService;
 import com.jeon.market.member.application.service.MemberService;
