@@ -1,13 +1,11 @@
 package com.jeon.market.product.endpoint;
 
 import com.jeon.market.auth.application.service.SessionService;
-import com.jeon.market.product.endpoint.request.ProductRegisterRequest;
-import com.jeon.market.product.endpoint.response.ProductRegisterResponse;
-import com.jeon.market.product.service.command.ProductCompleteCommandService;
-import com.jeon.market.product.service.command.ProductRegisterCommandService;
+import com.jeon.market.product.application.usecase.ProductCompleteUseCase;
+import com.jeon.market.product.application.usecase.ProductRegisterUseCase;
+import com.jeon.market.product.endpoint.payload.ProductRegisterPayload;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -15,29 +13,32 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     private final SessionService sessionService;
-    private final ProductRegisterCommandService productRegisterCommandService;
-    private final ProductCompleteCommandService productCompleteCommandService;
+    private final ProductRegisterUseCase productRegisterUseCase;
+    private final ProductCompleteUseCase productCompleteUseCase;
 
     public ProductController(SessionService sessionService,
-                             ProductRegisterCommandService productRegisterCommandService,
-                             ProductCompleteCommandService productCompleteCommandService) {
+                             ProductRegisterUseCase productRegisterUseCase,
+                             ProductCompleteUseCase productCompleteUseCase) {
         this.sessionService = sessionService;
-        this.productRegisterCommandService = productRegisterCommandService;
-        this.productCompleteCommandService = productCompleteCommandService;
+        this.productRegisterUseCase = productRegisterUseCase;
+        this.productCompleteUseCase = productCompleteUseCase;
     }
 
     @PostMapping("/product/register")
-    public ResponseEntity<ProductRegisterResponse> register(@RequestBody @Valid ProductRegisterRequest request) {
+    public ProductRegisterPayload.Response register(@RequestBody @Valid ProductRegisterPayload.Request request) {
         Long memberId = sessionService.getMemberId();
-        return ResponseEntity.ok(
-                ProductRegisterResponse.from(productRegisterCommandService.register(request.toRequest(memberId)))
+        var execute = productRegisterUseCase.execute(request.toRequest(memberId));
+        return new ProductRegisterPayload.Response(
+                execute.id(),
+                execute.title(),
+                execute.content(),
+                execute.price()
         );
     }
 
     @PatchMapping("/product/complete/{productId}")
-    public ResponseEntity<String> complete(@PathVariable("productId") Long productId) {
+    public void complete(@PathVariable("productId") Long productId) {
         Long memberId = sessionService.getMemberId();
-        productCompleteCommandService.complete(productId, memberId);
-        return ResponseEntity.ok("Ok");
+        productCompleteUseCase.execute(productId, memberId);
     }
 }

@@ -1,6 +1,6 @@
-package com.jeon.market.product.domain;
+package com.jeon.market.product.application.domain;
 
-import com.jeon.market.product.domain.type.ProductStatus;
+import com.jeon.market.product.application.domain.type.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 @Getter
 @Entity
-@Builder(access = AccessLevel.PRIVATE)
+@Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "PRODUCT")
@@ -39,30 +39,8 @@ public class Product {
     @Column(name = "STATUS")
     private ProductStatus status;
 
-    public static Product createProduct(
-            Long memberId,
-            String title,
-            String content,
-            BigInteger price
-    ) {
-        return Product.builder()
-                .memberId(memberId)
-                .title(title)
-                .content(content)
-                .price(price)
-                .status(ProductStatus.NEW)
-                .viewCount(0)
-                .build();
-    }
-
-    private void writerCheck(Long memberId) {
-        if (!this.memberId.equals(memberId)) {
-            throw new RuntimeException("등록자가 아님");
-        }
-    }
-
-    public void transactionComplete(Long memberId) {
-        this.writerCheck(memberId);
+    public void transactionComplete() {
         this.status = ProductStatus.COMPLETE;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.jeon.market.product.domain;
+package com.jeon.market.product.application.domain;
 
 import java.util.Optional;
 
