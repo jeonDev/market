@@ -1,5 +1,6 @@
 package com.jeon.market.product.application.domain;
 
+import com.jeon.market.product.application.domain.type.Category;
 import com.jeon.market.product.application.domain.type.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,10 @@ public class Product {
 
     @Column(name = "MEMBER_ID", nullable = false)
     private Long memberId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CATEOGRY", nullable = false)
+    private Category category;
 
     @Column(name = "TITLE", nullable = false)
     private String title;
