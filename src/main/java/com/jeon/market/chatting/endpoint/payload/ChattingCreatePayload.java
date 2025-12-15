@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record ChattingCreatePayload() {
 
+    @Schema(name = "ChattingCreateRequest")
     public record Request(
             @Schema(description = "채팅 대상 선택(개인)", example = "1") @NotNull(message = "채팅 대상을 선택하세요.") Long memberId,
             @Schema(description = "채팅방 선택(방)", example = "1") Long chatRoomId,
@@ -23,6 +24,7 @@ public record ChattingCreatePayload() {
         }
     }
 
+    @Schema(name = "ChattingCreateResponse")
     public record Response(
             @Schema(description = "채팅방 선택(방)", example = "1") Long chatRoomId
     ) {

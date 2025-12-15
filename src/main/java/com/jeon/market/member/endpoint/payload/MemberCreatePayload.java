@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record MemberCreatePayload() {
 
+    @Schema(name = "MemberCreateRequest")
     public record Request(
             @Schema(description = "ID", example = "test") @NotBlank String loginId,
             @Schema(description = "패스워드", example = "1234") @NotBlank String password,
@@ -46,6 +47,7 @@ public record MemberCreatePayload() {
         }
     }
 
+    @Schema(name = "MemberCreateResponse")
     public record Response(
             @Schema(description = "seq", example = "1") Long id
     ) {

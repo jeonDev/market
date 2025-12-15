@@ -11,6 +11,7 @@ import java.math.BigInteger;
 
 public record ProductRegisterPayload() {
 
+    @Schema(name = "ProductRegisterRequest")
     public record Request(
             @Schema(description = "제목", example = "옷을 판매합니다.") @NotBlank String title,
             @Schema(description = "내용", example = "남성용 바지 사이즈 XX") @NotNull String content,
@@ -29,6 +30,7 @@ public record ProductRegisterPayload() {
         }
     }
 
+    @Schema(name = "ProductRegisterResponse")
     public record Response(
             @Schema(description = "seq", example = "1") Long id,
             @Schema(description = "제목", example = "옷을 판매합니다.") String title,

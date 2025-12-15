@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record LoginPayload() {
 
+    @Schema(name = "LoginRequest")
     public record Request(
             @Schema(description = "아이디", example = "test") @NotBlank String id,
             @Schema(description = "패스워드", example = "1234") @NotNull String password
