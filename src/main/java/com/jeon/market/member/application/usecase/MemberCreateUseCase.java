@@ -3,7 +3,7 @@ package com.jeon.market.member.application.usecase;
 import com.jeon.market.member.application.service.MemberService;
 import com.jeon.market.member.application.usecase.request.CreateMemberCommand;
 import com.jeon.market.member.application.usecase.response.CreateMemberResult;
-import com.jeon.market.member.application.domain.Member;
+import com.jeon.market.member.domain.Member;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,6 +1,6 @@
 package com.jeon.market.member.application.usecase.response;
 
-import com.jeon.market.member.application.domain.type.Report;
+import com.jeon.market.member.domain.type.Report;
 
 public record MemberReportResult(
         Long id,

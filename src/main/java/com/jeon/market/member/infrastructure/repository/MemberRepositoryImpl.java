@@ -1,7 +1,7 @@
 package com.jeon.market.member.infrastructure.repository;
 
-import com.jeon.market.member.application.domain.Member;
-import com.jeon.market.member.application.domain.MemberRepository;
+import com.jeon.market.member.domain.Member;
+import com.jeon.market.member.domain.MemberRepository;
 import com.jeon.market.member.infrastructure.repository.jpa.JpaMemberRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

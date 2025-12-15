@@ -3,8 +3,8 @@ package com.jeon.market.chatting.application.usecase;
 import com.jeon.market.chatting.application.service.ChatRoomService;
 import com.jeon.market.chatting.application.usecase.request.ChattingRoomCommand;
 import com.jeon.market.chatting.application.usecase.response.ChattingRoomResult;
-import com.jeon.market.member.application.domain.Member;
-import com.jeon.market.member.application.domain.MemberRepository;
+import com.jeon.market.member.domain.Member;
+import com.jeon.market.member.domain.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

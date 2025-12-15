@@ -1,8 +1,8 @@
 package com.jeon.market.product.application.service.request;
 
-import com.jeon.market.product.application.domain.Product;
-import com.jeon.market.product.application.domain.type.Category;
-import com.jeon.market.product.application.domain.type.ProductStatus;
+import com.jeon.market.product.domain.Product;
+import com.jeon.market.product.domain.type.Category;
+import com.jeon.market.product.domain.type.ProductStatus;
 
 import java.math.BigInteger;
 

@@ -1,6 +1,6 @@
-package com.jeon.market.member.application.domain;
+package com.jeon.market.member.domain;
 
-import com.jeon.market.member.application.domain.type.Grade;
+import com.jeon.market.member.domain.type.Grade;
 import com.jeon.market.common.exception.ErrorType;
 import com.jeon.market.common.exception.ServiceException;
 import jakarta.persistence.*;

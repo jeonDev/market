@@ -1,6 +1,6 @@
 package com.jeon.market.member.application.usecase.request;
 
-import com.jeon.market.member.application.domain.type.Report;
+import com.jeon.market.member.domain.type.Report;
 import lombok.Builder;
 
 @Builder

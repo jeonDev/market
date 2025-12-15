@@ -1,7 +1,7 @@
 package com.jeon.market.chatting.infrastructure.repository;
 
-import com.jeon.market.chatting.application.domain.Chat;
-import com.jeon.market.chatting.application.domain.ChatRepository;
+import com.jeon.market.chatting.domain.Chat;
+import com.jeon.market.chatting.domain.ChatRepository;
 import com.jeon.market.chatting.infrastructure.repository.mongo.MongoChatRepository;
 import org.springframework.stereotype.Repository;
 

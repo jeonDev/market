@@ -1,4 +1,4 @@
-package com.jeon.market.member.application.domain.type;
+package com.jeon.market.member.domain.type;
 
 public enum Report {
     FRAUD,  // 사기 거래

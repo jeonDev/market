@@ -1,4 +1,4 @@
-package com.jeon.market.chatting.application.domain.dto;
+package com.jeon.market.chatting.domain.dto;
 
 import java.util.List;
 

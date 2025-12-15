@@ -1,6 +1,6 @@
-package com.jeon.market.member.application.domain;
+package com.jeon.market.member.domain;
 
-import com.jeon.market.member.application.domain.type.Report;
+import com.jeon.market.member.domain.type.Report;
 import jakarta.persistence.*;
 import lombok.*;
 

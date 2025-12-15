@@ -1,6 +1,6 @@
 package com.jeon.market.product.endpoint.payload;
 
-import com.jeon.market.product.application.domain.type.Category;
+import com.jeon.market.product.domain.type.Category;
 import com.jeon.market.product.application.usecase.request.ProductRegisterCommand;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

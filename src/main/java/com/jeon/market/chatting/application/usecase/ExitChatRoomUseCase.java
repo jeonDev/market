@@ -1,7 +1,7 @@
 package com.jeon.market.chatting.application.usecase;
 
-import com.jeon.market.chatting.application.domain.ChatMemberId;
-import com.jeon.market.chatting.application.domain.ChatMemberRepository;
+import com.jeon.market.chatting.domain.ChatMemberId;
+import com.jeon.market.chatting.domain.ChatMemberRepository;
 import com.jeon.market.chatting.application.service.ChatRoomService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

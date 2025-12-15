@@ -1,7 +1,8 @@
 package com.jeon.market.chatting.application.service;
 
 import com.jeon.market.chatting.application.domain.*;
-import com.jeon.market.chatting.application.domain.type.ChatType;
+import com.jeon.market.chatting.domain.*;
+import com.jeon.market.chatting.domain.type.ChatType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

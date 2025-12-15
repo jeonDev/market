@@ -1,7 +1,7 @@
-package com.jeon.market.product.application.domain;
+package com.jeon.market.product.domain;
 
-import com.jeon.market.product.application.domain.type.Category;
-import com.jeon.market.product.application.domain.type.ProductStatus;
+import com.jeon.market.product.domain.type.Category;
+import com.jeon.market.product.domain.type.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

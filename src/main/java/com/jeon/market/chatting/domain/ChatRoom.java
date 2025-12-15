@@ -1,6 +1,6 @@
-package com.jeon.market.chatting.application.domain;
+package com.jeon.market.chatting.domain;
 
-import com.jeon.market.chatting.application.domain.type.ChatType;
+import com.jeon.market.chatting.domain.type.ChatType;
 import jakarta.persistence.*;
 import lombok.*;
 

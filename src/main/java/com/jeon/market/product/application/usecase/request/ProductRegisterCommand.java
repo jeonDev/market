@@ -1,6 +1,6 @@
 package com.jeon.market.product.application.usecase.request;
 
-import com.jeon.market.product.application.domain.type.Category;
+import com.jeon.market.product.domain.type.Category;
 import com.jeon.market.product.application.service.request.ProductRegisterRequest;
 
 import java.math.BigInteger;

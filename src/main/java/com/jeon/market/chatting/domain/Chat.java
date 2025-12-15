@@ -1,6 +1,6 @@
-package com.jeon.market.chatting.application.domain;
+package com.jeon.market.chatting.domain;
 
-import com.jeon.market.chatting.application.domain.type.MessageType;
+import com.jeon.market.chatting.domain.type.MessageType;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 

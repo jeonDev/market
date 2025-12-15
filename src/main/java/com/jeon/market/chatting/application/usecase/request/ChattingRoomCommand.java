@@ -1,6 +1,6 @@
 package com.jeon.market.chatting.application.usecase.request;
 
-import com.jeon.market.chatting.application.domain.type.ChatType;
+import com.jeon.market.chatting.domain.type.ChatType;
 
 public record ChattingRoomCommand(
         Long memberId,

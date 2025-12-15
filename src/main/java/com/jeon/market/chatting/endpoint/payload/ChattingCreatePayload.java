@@ -1,6 +1,6 @@
 package com.jeon.market.chatting.endpoint.payload;
 
-import com.jeon.market.chatting.application.domain.type.ChatType;
+import com.jeon.market.chatting.domain.type.ChatType;
 import com.jeon.market.chatting.application.usecase.request.ChattingRoomCommand;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

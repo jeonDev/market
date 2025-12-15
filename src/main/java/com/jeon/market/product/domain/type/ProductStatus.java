@@ -1,4 +1,4 @@
-package com.jeon.market.product.application.domain.type;
+package com.jeon.market.product.domain.type;
 
 public enum ProductStatus {
     NEW,

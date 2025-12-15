@@ -1,8 +1,8 @@
 package com.jeon.market.chatting.infrastructure.repository;
 
-import com.jeon.market.chatting.application.domain.ChatMember;
-import com.jeon.market.chatting.application.domain.ChatMemberId;
-import com.jeon.market.chatting.application.domain.ChatMemberRepository;
+import com.jeon.market.chatting.domain.ChatMember;
+import com.jeon.market.chatting.domain.ChatMemberId;
+import com.jeon.market.chatting.domain.ChatMemberRepository;
 import com.jeon.market.chatting.infrastructure.repository.jpa.JpaChatMemberRepository;
 import org.springframework.stereotype.Repository;
 

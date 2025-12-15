@@ -1,7 +1,7 @@
 package com.jeon.market.product.application.usecase;
 
-import com.jeon.market.member.application.domain.Member;
-import com.jeon.market.member.application.domain.MemberRepository;
+import com.jeon.market.member.domain.Member;
+import com.jeon.market.member.domain.MemberRepository;
 import com.jeon.market.product.application.service.ProductService;
 import com.jeon.market.product.application.usecase.request.ProductRegisterCommand;
 import com.jeon.market.product.application.usecase.response.ProductRegisterResult;

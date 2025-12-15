@@ -1,9 +1,9 @@
 package com.jeon.market.product.application.usecase;
 
-import com.jeon.market.member.application.domain.Member;
-import com.jeon.market.member.application.domain.MemberRepository;
-import com.jeon.market.product.application.domain.Product;
-import com.jeon.market.product.application.domain.ProductRepository;
+import com.jeon.market.member.domain.Member;
+import com.jeon.market.member.domain.MemberRepository;
+import com.jeon.market.product.domain.Product;
+import com.jeon.market.product.domain.ProductRepository;
 import com.jeon.market.product.application.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

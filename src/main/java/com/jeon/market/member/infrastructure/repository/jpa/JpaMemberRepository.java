@@ -1,6 +1,6 @@
 package com.jeon.market.member.infrastructure.repository.jpa;
 
-import com.jeon.market.member.application.domain.Member;
+import com.jeon.market.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

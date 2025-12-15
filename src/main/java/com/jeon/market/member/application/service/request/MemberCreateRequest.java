@@ -1,6 +1,6 @@
 package com.jeon.market.member.application.service.request;
 
-import com.jeon.market.member.application.domain.Member;
+import com.jeon.market.member.domain.Member;
 
 public record MemberCreateRequest(
         String loginId,

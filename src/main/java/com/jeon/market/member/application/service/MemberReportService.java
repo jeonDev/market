@@ -1,7 +1,7 @@
 package com.jeon.market.member.application.service;
 
-import com.jeon.market.member.application.domain.MemberReport;
-import com.jeon.market.member.application.domain.MemberReportRepository;
+import com.jeon.market.member.domain.MemberReport;
+import com.jeon.market.member.domain.MemberReportRepository;
 import com.jeon.market.member.application.service.request.MemberReportRequest;
 import org.springframework.stereotype.Service;
 

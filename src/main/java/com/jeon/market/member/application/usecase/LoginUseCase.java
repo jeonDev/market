@@ -2,7 +2,7 @@ package com.jeon.market.member.application.usecase;
 
 import com.jeon.market.auth.application.service.TokenService;
 import com.jeon.market.common.exception.ServiceException;
-import com.jeon.market.member.application.domain.MemberRepository;
+import com.jeon.market.member.domain.MemberRepository;
 import com.jeon.market.member.application.usecase.response.LoginResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
