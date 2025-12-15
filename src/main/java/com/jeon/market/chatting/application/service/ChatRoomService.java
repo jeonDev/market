@@ -1,6 +1,5 @@
 package com.jeon.market.chatting.application.service;
 
-import com.jeon.market.chatting.application.domain.*;
 import com.jeon.market.chatting.domain.*;
 import com.jeon.market.chatting.domain.type.ChatType;
 import lombok.extern.slf4j.Slf4j;
