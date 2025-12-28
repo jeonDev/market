@@ -1,6 +1,7 @@
 package com.jeon.market.member.application.service.request;
 
 import com.jeon.market.member.domain.Member;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public record MemberCreateRequest(
         String loginId,
@@ -8,7 +9,7 @@ public record MemberCreateRequest(
         String name,
         String phoneNumber
 ) {
-    public Member toEntity() {
-        return Member.createMember(loginId, password, name, phoneNumber);
+    public Member toEntity(PasswordEncoder passwordEncoder) {
+        return Member.createMember(loginId, passwordEncoder.encode(password), name, phoneNumber);
     }
 }

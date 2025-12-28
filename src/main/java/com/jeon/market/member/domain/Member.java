@@ -6,6 +6,7 @@ import com.jeon.market.common.exception.ServiceException;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "MEMBER")
 @Access(AccessType.FIELD)
@@ -14,31 +15,26 @@ public class Member {
     private final Integer MAX_WRONG_PASSWORD_COUNT = 5;
     private final Integer BLACKLIST_REPORT_COUNT = 10;
 
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Getter
     @Column(name = "LOGIN_ID", nullable = false, length = 100)
     private String loginId;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Getter
     @Column(name = "NAME", nullable = false, length = 30)
     private String name;
 
-    @Getter
     @Column(name = "PHONE_NUMBER", length = 11)
     private String phoneNumber;
 
     @Column(name = "WRONG_PASSWORD_COUNT")
     private Integer wrongPasswordCount;
 
-    @Getter
     @Enumerated(EnumType.STRING)
     @Column(name = "GRADE")
     private Grade grade;
@@ -78,25 +74,18 @@ public class Member {
         }
     }
 
-    public void login(String password) {
-        this.validPassword(password);
+    public void loginCheck() {
         this.validWrongPasswordCount();
-        if (!this.password.equals(password)) {
-            this.wrongPasswordCount++;
-            throw new ServiceException(ErrorType.LOGIN_PASSWORD_UNMATCHED);
-        }
+    }
+
+    public void loginFailed() {
+        this.wrongPasswordCount++;
     }
 
     private void validWrongPasswordCount() {
         if (this.wrongPasswordCount > MAX_WRONG_PASSWORD_COUNT) {
             this.wrongPasswordCount++;
             throw new ServiceException(ErrorType.LOGIN_PASSWORD_WRONG_COUNT_MAX);
-        }
-    }
-
-    private void validPassword(String password) {
-        if (password == null || password.isEmpty()) {
-            throw new ServiceException(ErrorType.DATA_EMPTY_INPUT, "Password");
         }
     }
 
