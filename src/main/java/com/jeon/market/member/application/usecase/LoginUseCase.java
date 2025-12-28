@@ -1,6 +1,7 @@
 package com.jeon.market.member.application.usecase;
 
 import com.jeon.market.auth.application.service.TokenService;
+import com.jeon.market.auth.infrastructure.service.request.JwtTokenInfo;
 import com.jeon.market.common.exception.ServiceException;
 import com.jeon.market.member.domain.MemberRepository;
 import com.jeon.market.member.application.usecase.response.LoginResult;
@@ -28,7 +29,13 @@ public class LoginUseCase {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID"));
         member.login(password);
 
-        String accessToken = tokenService.generate(member.getId());
+        var tokenInfo = JwtTokenInfo.builder()
+                .id(member.getId())
+                .loginId(member.getLoginId())
+                .name(member.getName())
+                .grade(member.getGrade())
+                .build();
+        String accessToken = tokenService.generate(tokenInfo);
 
         return new LoginResult(
                 accessToken

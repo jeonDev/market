@@ -17,3 +17,4 @@ spring:
 security:
   allow-origin: http://localhost:3000
   white-list-uri: /login, /member/create, /swagger-ui/**, /v3/api-docs/**
+  secret-key: abcd
