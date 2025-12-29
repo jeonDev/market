@@ -15,6 +15,6 @@ spring:
     open-in-view: false
 
 security:
-  allow-origin: http://localhost:3000
+  allow-origin: http://localhost:5173
   white-list-uri: /login, /member/create, /swagger-ui/**, /v3/api-docs/**, /h2-console/**
   secret-key: abcd
