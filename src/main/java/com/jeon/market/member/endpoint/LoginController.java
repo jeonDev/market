@@ -23,7 +23,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody LoginPayload.Request request) {
         return ResponseEntity.ok(
-                loginUseCase.login(request.id(), request.password())
+                loginUseCase.login(request.loginId(), request.password())
                         .accessToken()
         );
     }
